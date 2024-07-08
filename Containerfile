@@ -7,6 +7,7 @@ WORKDIR /project
 # Copy package files in container currunt direcctory
 COPY --chown=1001:1001 package.json package-lock.json ./
 
+RUN npm config set registry http://localhost:8080/repository/my-org/
 
 # Install all Angular dependacies
 RUN npm ci
