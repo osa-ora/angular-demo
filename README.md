@@ -63,3 +63,77 @@ Click on the route and check the application:
 
 <img width="433" alt="Screenshot 2024-07-08 at 11 36 53 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/6956ceeb-fe80-4380-ab02-292865099c7b">
 
+
+#### Deploy using Builds for OpenShift :
+
+First you need to install the Builds for OpenShift Operator:
+
+<img width="276" alt="Screenshot 2024-07-08 at 11 54 49 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/f2f5d78d-e95a-43f6-a9bf-a5fb4a70f6df">
+
+Once, installed create an instance of "Shipwright Build", keep the default
+
+<img width="696" alt="Screenshot 2024-07-08 at 12 32 03 PM" src="https://github.com/osa-ora/angular-demo/assets/18471537/ea1641f3-df9d-4dfd-86bd-9c27ade1e177">
+
+Now, you can deploy the application by creating a Shipwright build either from the console or from the command line:
+
+```
+//create an openshift project
+oc new-project dev
+
+//create shipwright build for our application in the 'dev' project
+shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-demo" --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
+
+//start the build and follow the output
+shp build run angular-buildah --follow
+
+//create an application from the container image
+oc new-app angular-app
+
+//expose our application
+oc expose service/angular-app
+
+//test our application is deployed ..
+curl $(oc get route angular-app -o jsonpath='{.spec.host}')/
+
+```
+You can also click on the route to access the application as we did before.
+
+You can do the same from the Dev Console
+
+Go to "Builds" section and click on Create and select "Shipwright Build"
+
+<img width="1189" alt="Screenshot 2024-07-08 at 12 38 53 PM" src="https://github.com/osa-ora/angular-demo/assets/18471537/9eb76e9b-1dc0-41a2-992e-ea49985ba513">
+
+Post the following content:
+
+```
+apiVersion: shipwright.io/v1beta1
+kind: Build
+metadata:
+  name: my-shipwright-build
+  namespace: dev
+spec:
+  output:
+    image: 'image-registry.openshift-image-registry.svc:5000/dev/angular-app'
+  paramValues:
+    - name: dockerfile
+      value: Containerfile
+  source:
+    git:
+      url: 'https://github.com/osa-ora/angular-demo'
+    type: Git
+  strategy:
+    kind: ClusterBuildStrategy
+    name: buildah
+```
+
+Click on Create and then click on "Start Build", follow the logs:
+
+<img width="841" alt="Screenshot 2024-07-08 at 12 43 08 PM" src="https://github.com/osa-ora/angular-demo/assets/18471537/b9003c65-5a54-47a3-a720-5730d9dee0df">
+
+Now, you can deploy the appliation using "oc new-app angular-app" or from the console using container image option:
+
+<img width="708" alt="Screenshot 2024-07-08 at 12 46 57 PM" src="https://github.com/osa-ora/angular-demo/assets/18471537/d2d98b2a-e741-4725-a2b3-40812c314385">
+
+Test the application route and we are done!
+
