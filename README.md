@@ -138,3 +138,13 @@ Now, you can deploy the appliation using "oc new-app angular-app" or from the co
 
 Test the application route and we are done!
 
+#### Deploy the App with a Private Repository
+
+You can use any of the previous ways using the private repository configuration, go to the Containerfile and uncomment the private repository line:
+
+```
+# Configure this in case you need to build from a private repository, just change the url to ur registry url
+RUN npm config set registry {your repository URL here}
+```
+
+
