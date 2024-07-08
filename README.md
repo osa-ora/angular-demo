@@ -1,6 +1,7 @@
 ### Deploy Angular App to OCP
 
 This is illustration of deploying AngularJS app to OCP, the code is taken from Red Hat Dev: https://github.com/redhat-developer-demos/Angular-openshift-example
+The change that is made to this repo is the base image in the Containerfile is using the OCP internal image: image-registry.openshift-image-registry.svc:5000/openshift/nodejs:16-ubi8 and also using version 16, which you can change based on your application requirements.
 
 ### Steps:
 
