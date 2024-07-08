@@ -81,6 +81,7 @@ Now, you can deploy the application by creating a Shipwright build either from t
 oc new-project dev
 
 //create shipwright build for our application in the 'dev' project
+//our project code is in the root of the Git repo, otherwise we could have used '--source-context-dir="docker-build"' flag to specify the context folder of our application.
 shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-demo" --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
 
 //start the build and follow the output
