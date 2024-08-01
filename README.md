@@ -83,6 +83,8 @@ oc new-project dev
 //create shipwright build for our application in the 'dev' project
 //our project code is in the root of the Git repo, otherwise we could have used '--source-context-dir="docker-build"' flag to specify the context folder of our application.
 shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-demo" --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
+// you can also specify the dockerfile name and path using dockerfile param as following:
+shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-demo" --dockerfile="Containerfile"  --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
 
 //start the build and follow the output
 shp build run angular-buildah --follow
