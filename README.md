@@ -129,6 +129,7 @@ spec:
   source:
     git:
       url: 'https://github.com/osa-ora/angular-demo'
+      revision: main
     type: Git
   strategy:
     kind: ClusterBuildStrategy
