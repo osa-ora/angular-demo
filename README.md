@@ -15,9 +15,11 @@ From the developer console, go to "Import from Git"
 
 <img width="390" alt="Screenshot 2024-07-08 at 11 29 24 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/fb370e06-ddbc-444a-bcca-d5fcc1bfc98a">
 
-Fill in the source code of this repository.
+Fill in the source code of this repositorym click on advanced and add also the tag/branch and any context root.
 
 <img width="698" alt="Screenshot 2024-07-08 at 11 30 55 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/7fd13d74-694d-4285-a084-eefa5cf87bc4">
+
+Note: In case your respositiry is private, you need to have a service account or ssh key or user to be able to fetch the code.
 
 OCP will detect the ContainerFile and will select DockerFile strategy (you can change the strategy but we need the DockerFile strategy for AngularJS app).
 
