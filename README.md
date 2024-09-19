@@ -9,7 +9,7 @@ To deploy the code to OCP you need a base image where you can invoke the angular
 
 You can use either S2I or Tekton pipeline for that.
 
-#### Deploy using S2I :
+#### DEPLOYMENT OPTION 1: Deploy using S2I
 
 From the developer console, go to "Import from Git"
 
@@ -38,7 +38,7 @@ Click on the route and check the application:
 <img width="433" alt="Screenshot 2024-07-08 at 11 36 53 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/6956ceeb-fe80-4380-ab02-292865099c7b">
 
 
-#### Deploy using Tekton Pipeline :
+#### DEPLOYMENT OPTION 2: Deploy using Tekton Pipeline
 
 Follow the same step until you reach the Build Options, select "Pipeline" and select the pipeline as "Buildah Deployment"
 
@@ -66,7 +66,7 @@ Click on the route and check the application:
 <img width="433" alt="Screenshot 2024-07-08 at 11 36 53 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/6956ceeb-fe80-4380-ab02-292865099c7b">
 
 
-#### Deploy using Builds for OpenShift :
+#### DEPLOYMENT OPTION 3: Deploy using Builds for OpenShift
 
 First you need to install the Builds for OpenShift Operator:
 
