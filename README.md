@@ -19,6 +19,8 @@ Fill in the source code of this repositorym click on advanced and add also the t
 
 <img width="698" alt="Screenshot 2024-07-08 at 11 30 55 AM" src="https://github.com/osa-ora/angular-demo/assets/18471537/7fd13d74-694d-4285-a084-eefa5cf87bc4">
 
+Note: Repository renamed to "angular-ocp-demo"
+
 Note: In case your respositiry is private, you need to have a service account or ssh key or user to be able to fetch the code.
 
 OCP will detect the ContainerFile and will select DockerFile strategy (you can change the strategy but we need the DockerFile strategy for AngularJS app).
@@ -91,7 +93,7 @@ oc new-project dev
 //create shipwright build for our application in the 'dev' project
 //our project code is in the root of the Git repo, otherwise we could have used '--source-context-dir="docker-build"' flag to specify the context folder of our application.
 //
-shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-demo" --dockerfile="Containerfile"  --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
+shp build create angular-buildah --strategy-name="buildah" --source-url="https://github.com/osa-ora/angular-ocp-demo" --dockerfile="Containerfile"  --output-image="image-registry.openshift-image-registry.svc:5000/dev/angular-app"
 
 //start the build and follow the output
 shp build run angular-buildah --follow
@@ -130,7 +132,7 @@ spec:
       value: Containerfile
   source:
     git:
-      url: 'https://github.com/osa-ora/angular-demo'
+      url: 'https://github.com/osa-ora/angular-ocp-demo'
       revision: main
     type: Git
   strategy:
@@ -142,7 +144,7 @@ Note: For a private repository, you need to create a secret (that contains a use
   source:
     git:
       cloneSecret: my-private-repo-token
-      url: 'https://github.com/osa-ora/angular-demo'
+      url: 'https://github.com/osa-ora/angular-ocp-demo'
 ```
 
 Click on Create and then click on "Start Build", follow the logs:
