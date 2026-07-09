@@ -1,5 +1,5 @@
 # Import the base image as UBI-Nodejs 18 image
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nodejs:16-ubi8
+FROM image-registry.openshift-image-registry.svc:5000/openshift/nodejs:latest
 
 # Set the working directory to /project
 WORKDIR /project
